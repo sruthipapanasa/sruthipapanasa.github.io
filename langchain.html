@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = 'viewpoint' content = 'with = device-width, initial-scale = 1.0'>
+    <title>Sruthi Papanasa Portfolio</title>
+    <link rel = "stylesheet" href = 'style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<body>
+    <section class = 'sub-header'>
+        <nav>
+            <div class = 'nav-links' id = navLinks>
+                <ul>
+                    <li> <a href = "index.html">HOME</a> </li>
+                    <li> <a href = "index.html#about">ABOUT</a> </li>
+                    <li> <a href = "index.html#experience">EXPERIENCE</a> </li>
+                    <li> <a href = "https://drive.google.com/file/d/1uoGN14LCU77lnt6A4hRiQLKBcPk_6HZJ/view?usp=sharing" target="_blank">RESUME</a> </li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id = 'menu' onclick="toggleMenu()"></i>
+        </nav>
+        <h1>Developing Political Personas With Langchain</h1>
+        <ul class = 'proj-stuff'>
+            <li> <a href = "https://github.com/sruthipapanasa/B14_Q2_Submission/tree/main" target="_blank">CODE</a> </li>
+            <li> <a href = "https://sruthipapanasa.github.io/capstone_website/report.pdf" target="_blank">REPORT</a> </li>
+        </ul>
+
+    </section>
+
+    <section class = 'lang-content'>
+        <h2>Project Description</h2> 
+        <p>
+            The main goal of politicians is to cater to their constituents and understand the changes they want to see. 
+            To do so, they need to be able to accurately identify their target voters, contact and survey them, understand 
+            their values and ideals, and predict which policies would best represent such populations. However, this process can 
+            often be time-consuming and expensive. Our project aims to help this problem.</p> <br>
+            
+            <p>Twitter data contains a wealth of information that contains public 
+            opinions on policies and politicians. By analyzing tweets from different political groups, 
+            we aim to create personas that mimic key voter groups using LangChain Agents and OpenAI’s GPT-3.5 Turbo API. 
+            Our goal is to develop a model that can generate new data to predict real voting patterns based on previously posted tweets. 
+            We will then be able to ask these personas different political questions and explore their response and reasoning.</p> <br>
+
+
+        <h2>Objectives</h2>
+        <p><b>Locate a Political Candidate’s Target Audience:</b> Because our model can predict public opinion on political issues, 
+            candidates can figure out which voters align best with their policies in order to accurately target their campaign’s 
+            marketing efforts, which will help voters feel better represented by their leaders.</p> <br>
+
+            <p><b>Forecast Success of Political Candidates:</b> Policies: Candidates can ask our model to predict whether the exact policies 
+                they want to implement will gain favor or discontent from the public. They can use these responses to tailor their 
+                policies that will represent and benefit as many voters as possible.</p> <br>
+            
+            <p><b>Address Limitations of Surveys and Cold Calling:</b> Surveys and cold calling are very time-consuming and expensive. 
+                These traditional methods also have a low success rate as the average person may not take time out of their day to complete them. 
+                Our project addresses this problem.</p> <br>
+
+        <h2>Methods</h2> 
+        <h3>Part 1: NLP Approach - Sentiment Analysis</h3>
+        <ol>
+            <li>Calculated the average sentiment of each user’s tweets and classified each user into Biden-supporting voter, 
+                Trump-supporting voter, or neutral voter</li>
+            <li>Split the Biden-supporting users into Biden Strong and Biden Weak based on a sentiment threshold, repeated for Trump-supporting users</li>
+        </ol> <br>
+        <h3>Part 2: LLM Approach - Model Development</h3>
+        <ol>
+            <li>
+                Used LangChain as our model integration framework and OpenAI’s GPT-3.5 Turbo-Instruct API to create an LLM-powered generative model 
+                that can use trained clusters to produce the political affiliation, policy related opinions, opinion polarity, and emotional 
+                tone relating to common political discourses of 5 select voter populations
+            </li>
+            <li>
+                Created 5 models, named Biden_strong, Biden_weak, Neutral, Trump_strong, Trump_weak
+            </li>
+            <li>
+                Model Training
+                <ul>
+                    <li>
+                        <em>Semantic training:</em> analyzes the training tweets’ semantic language style and word choice to extract the tone and emotion of select voter type
+                    </li>
+                    <li>
+                        <em>Contextual training:</em> uses author’s tone description and analyzes the context and meaning of training tweets to extract the political stance, candidate affiliation, and general opinion of voter type
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Asked the five models 9 questions about relevant political topics (e.g. gun control, abortion legalization, climate change, etc.) and recorded results to gain understanding of sample political 
+                opinions
+            </li>
+        </ol> <br>
+
+        <h2>Flowchart of Methods</h2>
+        <img src = "images/flowchart.png" id = "flow"> 
+
+        <h2>Results</h2>
+        <h3>NLP Findings</h3>
+        <ul>
+            <li>
+                1,260 users: 645 support Biden (51%), 461 support Trump (37%), 154 are neutral (12%) 
+            </li>
+            <li>
+                The sentiment score results are strongly negative, meaning it is more common 
+                for users to express support for a certain candidate by expressing negative views about the competing candidate, as opposed to positive views about their own
+            </li>
+        </ul>
+        <h3>LLM Findings</h3>
+        <ul>
+            <li>
+                Outputs for models were very emotionally charged, polarizing, and made use of strongly opinionated language
+            </li>
+            <li>
+                Even neutral model expressed its moderate views with strong conviction
+            </li>
+            <li>
+                Result aligns with our initial expectations, as Twitter contains the most intense opinions, and this 
+                is reflected by our model
+            </li>
+        </ul> <br>
+
+        <h2>Sample Responses</h2>
+        <img src="images/sr.jpeg" id = "sample">
+
+        <h2>Limitations</h2>
+        <ul>
+            <li>
+                Open AI API limits how many tweets we can sample due to exceeding the number of tokens available
+            </li>
+            <li>
+                Datasets have limited data and it’s very skewed towards tweets with negative sentiments (not enough tweets with positive sentiments)
+            </li>
+            <li>
+                Datasets are only available for Trump and Biden, thus limiting our insight about other parties such as the Independent party, Green party, etc.
+            </li>
+            <li>
+                Only data from 2020’s tweets are used, so the current political climate is not accurately reflected
+            </li>
+        </ul> <br>
+
+        <h2>Next Steps</h2>
+        <ul>
+            <li>
+                Be able to feed our models the latest Twitter data to get a more accurate picture of the current political climate
+            </li>
+            <li>
+                Find a way to sample more Tweets than we can with the limitation of our current model
+            </li>
+            <li>
+                Have our model output more streamlined answers through prompt engineering so that further analysis can be performed on the model responses
+            </li>
+        </ul>
+
+
+       
+    </section>
+
+
+    <!---------Footer--------->
+<section class = 'footer'>
+    <h4>Thanks for visiting!</h4>
+    <div class = 'footer-icons'>
+    <a href="https://www.linkedin.com/in/sruthi-papanasa/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/sruthipapanasa" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:sruthi.papanasa@gmail.com">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+
+</section>
