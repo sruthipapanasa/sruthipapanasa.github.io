@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = 'viewpoint' content = 'with = device-width, initial-scale = 1.0'>
+    <title>Sruthi Papanasa Portfolio</title>
+    <link rel = "stylesheet" href = 'style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<body>
+    <section class = 'header'>
+        <nav>
+            <div class = 'nav-links' id = navLinks>
+                <ul>
+                    <li> <a href = "">HOME</a> </li>
+                    <li> <a href = "#about">ABOUT</a> </li>
+                    <li> <a href = "#experience">EXPERIENCE</a> </li>
+                    <li> <a href = "https://drive.google.com/file/d/1uoGN14LCU77lnt6A4hRiQLKBcPk_6HZJ/view?usp=sharing" target="_blank">RESUME</a> </li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id = 'menu' onclick="toggleMenu()"></i>
+        </nav>
+
+        <div class = 'text-box'>
+            <h1>Hey! I'm Sruthi</h1>
+            <h2>a data scientist with a passion for finding stories in numbers</h2>
+            <a href="https://www.linkedin.com/in/sruthi-papanasa/" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/sruthipapanasa" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:sruthi.papanasa@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+            
+        </div>
+        <i class="fa-solid fa-angle-down" id="scroll-indicator"></i>
+
+    </section>
+
+    <!---------About--------->
+    <section class = "about" id = 'about'>
+        <h1>About Me</h1>
+        <img src = "images/me.jpeg">
+        <p>I'm a recent data science graduate from UC San Diego 
+            with a strong background in <b>data analysis</b> and <b>artificial intelligence</b>. 
+            I have hands-on experience in building <b>AI models</b> and creating impactful 
+            <b>data visualizations</b>. In my free time, I enjoy reading, hiking, and fostering cats! <br> <br>
+            Currently, I'm looking for full-time opportunities to apply my skills in a dynamic environment
+            and contribute to meaningul projects!
+        </p>      
+    </section>
+
+    <!---------Experience--------->
+    <section class="experience" id = 'experience'>
+        <h1>Internships </h1><br><br>
+    
+        <!-- Dion Health Internship -->
+        <div class="internship">
+            <div class="company">
+                <img src="images/dion_health_logo.jpeg" alt="Dion Health Logo" class="company-logo">
+                <div class="details">
+                    <h3>Business Intelligence Intern – Dion Health</h3>
+                    <p><strong>Orinda, CA | Jun. 2024 - Sep. 2024</strong></p>
+                    <ul>
+                        <li>Analyzed retention trends and visit patterns across 50,000+ patient records using <b>SQL</b> and <b>BigQuery</b>, uncovering key trends and critical drop-off points.</li>
+                        <li>Developed and tracked <b>KPIs</b> in <b>Looker Studio</b> dashboards to measure patient retention, appointment adherence, and clinic performance, driving data-driven decision-making.</li>
+                        <li>Conducted financial performance analysis for eight clinics, identifying factors behind the top clinic’s success and recommending best practices for others.</li> <br><br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <!-- BMO Financial Group Internship -->
+        <div class="internship">
+            <div class="company">
+                <img src="images/bmo_logo_with_extra_white_space_877_176_2937_2240.jpg" alt="BMO Financial Group Logo" class="company-logo">
+                <div class="details">
+                    <h3>DevOps Intern – BMO Financial Group</h3>
+                    <p><strong>Chicago, IL | Jun. 2023 - Sep. 2023</strong></p>
+                    <ul>
+                        <li>Led the automation of <b>AWS EC2</b> instance provisioning with <b>AWS CDK</b> pipelines, enhancing efficiency and scalability.</li>
+                        <li>Developed and maintained <b>Python</b> scripts to automate EC2 instances, reducing manual provisioning time by 30% and streamlining operations.</li>
+                        <li>Collaborated with software engineering teams to integrate automated solutions into development workflows, enhancing deployment processes.</li> <br><br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <i class="fa-solid fa-angle-down" id="scroll-indicator"></i>
+    </section>
+
+    <section class = 'project'>
+        <h1>Projects </h1>
+
+        <div class = 'row'>
+            <div class = 'project-col'>
+                <a href="langchain.html">
+                <img src="images/blue.png" alt="">
+                <h3>Developing Political Personas With LangChain</h3>
+            </a>
+                
+            </div>
+            <div class = 'project-col'>
+                <a href="league.html">
+                <img src="images/blue.png" alt="">
+                <h3>League of Legends Winner Prediction</h3>
+            </a>
+                
+            </div>
+            <div class = 'project-col'>
+                <a href="blackjack.html">
+                <img src="images/blue.png" alt="">
+                <h3>AI BlackJack</h3>
+            </a>
+            </div>
+        </div>
+    </section>
+
+   <!---------Skills--------->
+   <section class = 'skills'>
+    <h1>Skills</h1>
+    <div class = 'row'>
+        <div class = 'skills-col'>
+            <h3>Languages & Libraries</h3> 
+            <ul>
+                <li>Python</li> 
+                <li>SQL</li>
+                <li>R</li>
+                <li>MATLAB</li>
+                <li>Pandas/Numpy</li>
+                <li>Matplotlib</li>
+                <li>Tensorflow/Keras</li>
+                <li>scikit-learn</li>
+            </ul>
+
+        </div>
+        <div class = 'skills-col'>
+            <h3>Data Management & Cloud</h3>
+            <ul>  
+            <li>Google Cloud Platform</li> 
+            <li>BigQuery</li> 
+            <li>PostgreSQL</li> 
+            <li>AWS</li>
+        </ul>
+        </div>
+        <div class = 'skills-col'>
+            <h3>Visualization & BI Tools</h3>
+            <ul>
+            <li>Tableau</li> 
+            <li>Power BI</li> 
+            <li>Looker Studio</li> 
+            <li>Microsoft Excel</li> 
+            <li>SAS JMP</li> 
+        </ul>
+        </div>
+    </div>
+
+   </section>
+
+<!---------Footer--------->
+<section class = 'footer'>
+    <h4>Thanks for visiting!</h4>
+    <div class = 'footer-icons'>
+    <a href="https://www.linkedin.com/in/sruthi-papanasa/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/sruthipapanasa" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:sruthi.papanasa@gmail.com">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+
+</section>
+
+    
+
+
+
+<!--------------------JavaScript for Toggle Menu---------->
+
+<script>
+    var navLinks = document.getElementById('navLinks');
+
+function toggleMenu() {
+    // Check the current right position of navLinks
+    if (navLinks.style.right === "0px") {
+        hideMenu(); // If it's fully visible, hide it
+    } else {
+        showMenu(); // If it's hidden, show it
+    }
+}
+
+function showMenu() {
+    navLinks.style.right = "0"; // Show the menu
+}
+
+function hideMenu() {
+    navLinks.style.right = "-200px"; // Hide the menu
+}
+
+</script>
+</body>
+</html>
