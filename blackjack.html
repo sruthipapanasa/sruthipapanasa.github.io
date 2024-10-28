@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = 'viewpoint' content = 'with = device-width, initial-scale = 1.0'>
+    <title>Blackjack</title>
+    <link rel = "stylesheet" href = 'style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<body>
+    <section class = 'sub-header'>
+        <nav>
+            <div class = 'nav-links' id = navLinks>
+                <ul>
+                    <li> <a href = "index.html">HOME</a> </li>
+                    <li> <a href = "index.html#about">ABOUT</a> </li>
+                    <li> <a href = "index.html#experience">EXPERIENCE</a> </li>
+                    <li> <a href = "https://drive.google.com/file/d/1uoGN14LCU77lnt6A4hRiQLKBcPk_6HZJ/view?usp=sharing" target="_blank">RESUME</a> </li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id = 'menu' onclick="toggleMenu()"></i>
+        </nav>
+        <h1>AI Blackjack</h1>
+        <ul class = 'proj-stuff'>
+            <li> <a href = "https://github.com/sruthipapanasa/Machine-Learning-Black-Jack" target="_blank">CODE</a> </li>
+        </ul>
+
+    </section>
+
+    <section class = 'ai-content'>
+        <h2>Project Description</h2>
+    <p>The Blackjack Predictor is an innovative terminal-based application that combines artificial intelligence 
+        with a simulated blackjack game to enhance player decision-making.
+         By leveraging a deep learning model trained on historical game data, 
+         this application predicts the outcomes of blackjack hands, 
+         providing users with actionable insights based on their current game state. <br><br>After inputting their 
+         first card and second card, as well as the dealer card, 
+         the program displays the recommended course of action at the given point in time, 
+         along with the current win/loss probability and a hi-lo count of the cards. 
+         The recommended actions are based on this chart (show chart of blackjack hands), 
+         which describes the three outcomes the program will assign your current hand to: a hard hand, 
+         a soft hand, and a pair.
+        </p>
+
+        <img src = "images/hands.jpg">
+<br>
+    <h2>Data Collection and Processing</h2>
+    <p>The project begins with the collection of historical gameplay data from a CSV file (<code>blackjack.csv</code>). Each record includes details such as player card values, the dealer’s visible card, and the outcome of the game (Win or Loss). The data undergoes a transformation process to create a cleaned dataset (<code>modified_blackjack.csv</code>), which involves:</p>
+    <ul>
+        <li><strong>Encoding Outcomes:</strong> Transforming game outcomes into binary labels (0 for Loss, 1 for Win).</li>
+        <li><strong>Feature Selection:</strong> Extracting relevant features, including player card values, the sum of cards, and the dealer's visible card.</li>
+        <li><strong>Batch Preparation:</strong> Utilizing TensorFlow's <code>tf.data</code> API to create a streamlined pipeline for efficient loading and preprocessing of the dataset.</li>
+    </ul>
+<br>
+    <h2>Data Methods</h2>
+    <p>The features used for the model input include:</p>
+    <ul>
+        <li><strong>Player Cards:</strong> Values of up to five player cards.</li>
+        <li><strong>Cardsum:</strong> The total value of the player’s cards.</li>
+        <li><strong>Dealer's Card:</strong> The value of the dealer’s visible card.</li>
+    </ul>
+    <p>This structured approach ensures that the model is trained on relevant features that influence the game outcome. TensorFlow's <code>make_csv_dataset</code> method is employed to generate batches, facilitating real-time training and inference.</p>
+<br>
+    <h2>Model Architecture</h2>
+    <p>The core of the Blackjack Predictor lies in its deep learning model, designed using TensorFlow and Keras. The model architecture is as follows:</p>
+    <ul>
+        <li><strong>Input Layer:</strong> Accepts a tensor of shape (batch_size, 7) corresponding to the 7 features (5 player cards, cardsum, dealer’s visible card).</li>
+        <li><strong>Hidden Layers:</strong>
+            <ul>
+                <li>First Hidden Layer: 10 neurons with ReLU activation. This layer captures complex patterns in the input data.</li>
+                <li>Second Hidden Layer: Another layer of 10 neurons with ReLU activation. This additional layer allows for deeper feature extraction and enhances the model’s ability to learn intricate relationships.</li>
+            </ul>
+        </li>
+        <li><strong>Output Layer:</strong>
+            <ul>
+                <li>Softmax Activation: Two neurons corresponding to the two classes (Win, Loss). The softmax function provides a probability distribution over the classes, indicating the likelihood of each outcome based on the input features.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>The model utilizes categorical cross-entropy as the loss function, which is appropriate for multi-class classification tasks, and an Adam optimizer is employed to adjust the model weights efficiently during training, enhancing convergence speed.</p>
+<br>
+    <h2>Model Training and Evaluation</h2>
+    <p>The model is trained on the processed dataset using TensorFlow’s built-in training routines. Key aspects of training include:</p>
+    <ul>
+        <li><strong>Batch Size:</strong> The dataset is processed in batches of 50, balancing memory usage and training speed.</li>
+        <li><strong>Epochs:</strong> The model is trained for a specified number of epochs, allowing it to learn from the dataset incrementally.</li>
+        <li><strong>Validation:</strong> Cross-validation may be employed to assess model performance on unseen data, helping to mitigate overfitting.</li>
+    </ul>
+    <p>If a pre-trained model exists, it is loaded for predictions. If not, the model undergoes training from scratch.</p>
+<br>
+    <h2>Gameplay Integration</h2>
+    <p>The Blackjack game integrates the model seamlessly into gameplay mechanics:</p>
+    <ul>
+        <li><strong>Deck Initialization:</strong> A standard 52-card deck is created, shuffled, and prepared for play.</li>
+        <li><strong>Card Dealing:</strong> Players and dealers are dealt cards, and their hands are tracked throughout the game.</li>
+        <li><strong>Real-Time Prediction:</strong> At any point in the game, players can invoke the model to predict outcomes based on their current hands. The model's predictions provide probabilities indicating whether to stand or hit, thus aiding strategic gameplay.</li>
+        <li><strong>Feedback Loop:</strong> Players can learn from model predictions and game outcomes, continuously refining their strategies.</li>
+    </ul><br>
+
+    <h2>Results and Insights</h2>
+    <p>The model's predictions deliver insights into winning probabilities and potential game outcomes. For example, if the model predicts a 70% chance of winning, players may be more inclined to continue playing rather than folding. By integrating AI predictions, the Blackjack Predictor not only entertains but also educates users on optimal strategies in blackjack.</p>
+
+    </section>
+
+     <!---------Footer--------->
+<section class = 'footer'>
+    <h4>Thanks for visiting!</h4>
+    <div class = 'footer-icons'>
+    <a href="https://www.linkedin.com/in/sruthi-papanasa/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/sruthipapanasa" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:sruthi.papanasa@gmail.com">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+
+</section>

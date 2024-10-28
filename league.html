@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = 'viewpoint' content = 'with = device-width, initial-scale = 1.0'>
+    <title>League</title>
+    <link rel = "stylesheet" href = 'style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<body>
+    <section class = 'sub-header'>
+        <nav>
+            <div class = 'nav-links' id = navLinks>
+                <ul>
+                    <li> <a href = "index.html">HOME</a> </li>
+                    <li> <a href = "index.html#about">ABOUT</a> </li>
+                    <li> <a href = "index.html#experience">EXPERIENCE</a> </li>
+                    <li> <a href = "https://drive.google.com/file/d/1uoGN14LCU77lnt6A4hRiQLKBcPk_6HZJ/view?usp=sharing" target="_blank">RESUME</a> </li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id = 'menu' onclick="toggleMenu()"></i>
+        </nav>
+        <h1>League of Legends Winner Prediction</h1>
+        <ul class = 'proj-stuff'>
+            <li> <a href = "https://drive.google.com/file/d/16a9i9lFJL4FmnF_xlvqKZks5aElDqnWw/view?usp=sharing" target="_blank">REPORT</a> </li>
+        </ul>
+
+    </section>
+
+    <section class = 'league-content'>
+        <h2>Project Description</h2>
+        <p>League of Legends (LoL) is the most
+            popular Multiplayer Online Battle Arena
+            (MOBA) at this time, developed by Riot
+            Games. Most of LoL’s success is due to its
+            competitive ranked gameplay where two
+            teams of five players fight against each
+            other to destroy the other team’s base.</p><br>
+        <p>
+            In this project, we use various
+machine learning models that can predict
+the outcome of the ranked LoL match. Given that early-game performance often sets the tone for the match, 
+the project focuses on early-game statistics to see how well they predict the outcome. 
+With a predictive accuracy of over 80%, the model highlights that team advantage 
+in the early stages can significantly forecast match results.
+        </p> <br>
+
+        <h2>Dataset</h2>
+        <p>The data was gathered from Riot Games’ public API, covering over 25,000 ranked matches played by competitive players. 
+            Key features include:</p>
+            <ul>
+                <li>
+                    Gold: Reflects the in-game currency earned by a team,
+                     used to enhance player power by purchasing items.
+                </li>
+                <li>
+                    Experience (XP): Indicates the total experience points a team accumulates, 
+                    affecting the players’ level and in-game strength.
+                </li>
+                <li>
+                    Dragons Killed: Represents the number of dragons defeated by each team, with specific 
+                    types (like Fire, Earth, and Water) 
+                    granting different strategic advantages.
+                </li>
+                <li>
+                    Inhibitors Destroyed: Counts the number of inhibitors broken by the opposing team,
+                     which can significantly impact game progression.
+                </li>
+            </ul> <br>
+
+            <h2>Feature Selection</h2>
+            <p>Feature selection was essential to build an effective predictive model. 
+                Using Pearson’s R-correlation, the project identified that the features
+                 most correlated with winning outcomes were gold, experience, dragon kills, and 
+                 inhibitors destroyed. <br><br>Additional analysis reduced the feature set from 
+                 40 down to 11, eliminating redundant features like kills and assists that could be 
+                 derived from other data points. By simplifying the model to focus on these
+                  top predictors, the model improved both in accuracy and interpretability, with these 
+                  key metrics emerging as reliable indicators of match success in the early game. <br><br>
+
+            </p>
+
+            <h2>Predictive Task and Model</h2>
+            <p>
+                The main goal was to predict the winning team based on early-game data. 
+                The dataset was divided into a training set (80%) and a test set (20%) 
+                to evaluate performance. Several machine learning models were tested: <br>
+                <ul>
+                    <li>
+                        Basic Logistic Regression Classifier (Baseline)
+                    </li>
+                    <li>
+                        Support Vector Classifier (SVC)
+                    </li>
+                    <li>
+                        Random Forest (RF)
+                    </li>
+                    <li>
+                        Gradient Boosting (GBoost)
+                    </li>
+                    <li>
+                        k-Nearest Neighbors (kNN)
+                    </li>
+                </ul>
+           
+                While GBoost initially performed best, 
+                the final optimized k-Nearest Neighbors (kNN) model emerged as the top choice due 
+                to its efficiency and scalability, achieving high accuracy with reduced computational load.
+                 Parameters were tuned using GridSearch, and the optimized kNN configuration included a 
+                 Manhattan distance metric, 99 neighbors, and distance-based weighting. 
+                 This model offered high accuracy while remaining lightweight and fast for training,
+                  making it ideal for potential scaling on larger datasets.
+
+            </p> <br>
+
+            <img src = "images/acc.png">
+
+            <h2>EDA</h2>
+            <p>
+                EDA was conducted to understand how specific metrics differed between 
+                winning and losing teams within the first 15 minutes. Analysis showed that 
+                winning teams typically accumulated higher average gold 
+               and experience points. Winning teams also 
+                excelled in securing objectives, destroying significantly more dragons and turrets 
+                than their opponents. <br><br>Additional features, such as average kills, were also higher 
+                for winning teams, indicating that early advantages in resources and objectives lead to higher win probabilities. 
+                This analysis confirmed that early-game performance can be a strong indicator of the match outcome and reinforced the 
+                importance of the chosen features in predicting winners.
+            </p> <br>
+
+            <h2>Conclusion</h2>
+            <p>
+                The project successfully demonstrated that early-game metrics could predict the outcome of a League of Legends match with over 80% accuracy. 
+                The final model, a k-Nearest Neighbors (kNN) classifier, was both effective and efficient, 
+                maintaining high accuracy while using fewer features than other models tested. 
+                <br><br>By focusing on just a few critical metrics like gold, experience, and objectives achieved (dragons and inhibitors destroyed), 
+                the project showed that early-game performance is crucial in competitive matches. Future improvements could include 
+                incorporating player-specific skill metrics to enhance accuracy further, as studies show this data may offer additional predictive value.  
+            </p>
+
+
+
+
+
+        
+
+    </section>
+
+     <!---------Footer--------->
+<section class = 'footer'>
+    <h4>Thanks for visiting!</h4>
+    <div class = 'footer-icons'>
+    <a href="https://www.linkedin.com/in/sruthi-papanasa/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/sruthipapanasa" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:sruthi.papanasa@gmail.com">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+
+</section>
