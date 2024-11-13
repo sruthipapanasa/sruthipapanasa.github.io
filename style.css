@@ -319,7 +319,9 @@ h3 {
     font-size: 30px; /* Adjust size as needed */
     color: black; /* Change color based on your design */
     animation: bounce 1.5s infinite; /* Optional: Add a bounce animation */
+    
 }
+
 
 .project a{
     text-decoration: none;
